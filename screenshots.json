@@ -1,0 +1,70 @@
+{
+    "product_id": 259182,
+    "best": "hero",
+    "pairs_with": [
+        "cartrules-one-category-in-cart-for-woocommerce",
+        "cartrules-one-shipping-class-in-cart-for-woocommerce"
+    ],
+    "shots": [
+        {
+            "name": "hero",
+            "url": "/cart/",
+            "selector": ".wp-block-woocommerce-cart",
+            "pad": 24,
+            "viewport": [
+                1400,
+                900
+            ],
+            "settle": 3500,
+            "css": "#coming-soon-footer-banner{display:none!important}",
+            "actions": [
+                {
+                    "goto": "/?add-to-cart=332"
+                },
+                {
+                    "goto": "/?add-to-cart=333"
+                }
+            ],
+            "seed": {
+                "options": {
+                    "cartrules_otic_enabled": "yes"
+                },
+                "php": "$__tag = get_term_by('name', 'Personalized', 'product_tag'); if (!$__tag) { $__t = wp_insert_term('Personalized', 'product_tag'); $__tag_id = $__t['term_id']; } else { $__tag_id = $__tag->term_id; } $__names = array(332 => array('Personalized Ceramic Mug', '24.00'), 333 => array('Personalized Leather Tote', '58.00')); foreach ($__names as $__id => $__data) { list($__n, $__price) = $__data; $__existing = get_post($__id); if (!$__existing || $__existing->post_title !== $__n) { $__p = new WC_Product_Simple(); $__p->set_name($__n); $__id = $__p->save(); } $__prod = wc_get_product($__id); $__prod->set_regular_price($__price); $__prod->save(); wp_set_object_terms($__id, array($__tag_id), 'product_tag'); } WC()->cart->empty_cart();"
+            }
+        },
+        {
+            "name": "top",
+            "slot": "row",
+            "url": "/wp-admin/admin.php?page=wc-settings&tab=cartrules&section=otic",
+            "selector": [
+                "tr:has(#cartrules_otic_enabled)",
+                "tr:has(#cartrules_otic_mode)"
+            ],
+            "pad": 20,
+            "viewport": [
+                900,
+                500
+            ],
+            "settle": 1200
+        },
+        {
+            "name": "bottom",
+            "slot": "row",
+            "url": "/wp-admin/admin.php?page=wc-settings&tab=cartrules&section=otic",
+            "selector": [
+                "tr:has(#cartrules_otic_deny_message)",
+                "tr:has(#cartrules_otic_replace_message)"
+            ],
+            "pad": 20,
+            "viewport": [
+                900,
+                700
+            ],
+            "settle": 1200
+        }
+    ],
+    "hero": {
+        "layout": "single",
+        "shot": "hero"
+    }
+}

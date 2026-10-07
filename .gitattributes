@@ -25,3 +25,5 @@
 /.phpcs-cache export-ignore
 /composer.json export-ignore
 /composer.lock export-ignore
+/screenshots export-ignore
+/screenshots.json export-ignore
